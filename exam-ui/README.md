@@ -1,4 +1,13 @@
 # ExamUi
+* This is angular project for online exam portal
+* Based on Angular Material UI
+* Uses Bootstrap grid for layout
+* Connects with backend exam-server API
+* sweetalert2 module for shwoing messages
+
+
+
+# ExamUi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 

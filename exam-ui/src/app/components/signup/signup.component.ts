@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -28,14 +29,28 @@ export class SignupComponent implements OnInit {
     console.log(this.user);
     
     if(this.user.userName=='' || this.user.userName == null) {
-        this._snackBar.open("User is required", undefined, {duration:5000});
+        this._snackBar.open("UserName is required", '', {
+          duration:3 * 1000
+        });
 
         return;
     }
 
+    if(this.user.password=='' || this.user.password == null) {
+      this._snackBar.open("Password is required", '', {
+        duration:3 * 1000
+      });
+
+      return;
+  }
+
+    //TODO: validate other fields as well using regex and other field specific details
+
+
     this.userService.addUser(this.user).subscribe(
-      (data) => {
+      (data: any) => {
         console.log(data);
+        Swal.fire('Done!!', 'User is registered with id: ' + data.id, 'success');
         this._snackBar.open("Success", undefined, {duration:5000});
       },
       (error) => {
