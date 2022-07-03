@@ -1,0 +1,1 @@
+Exam Server is a backend API Server for EXAm UI application
