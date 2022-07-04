@@ -14,18 +14,18 @@
                     <h1 class="text-center">
                         Login Here !!
                     </h1>
-
-                    <form>
+<!-- {{loginData | json}} -->
+                    <form (ngSubmit)="onSubmit()">
                         <!--UserName -->
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>User Name</mat-label>
-                            <input required matInput placeholder="Enter here">
+                            <input required matInput placeholder="Enter here" [(ngModel)]="loginData.userName" name="userName">
                             <mat-hint>Valid User Name</mat-hint>
                         </mat-form-field>
 
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input required matInput placeholder="Enter here" type="password">
+                            <input required matInput placeholder="Enter here" type="password" [(ngModel)]="loginData.password" name="password">
                             <mat-hint></mat-hint>
                         </mat-form-field>
 

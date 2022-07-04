@@ -4,6 +4,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import tech.surfer.examserver.entity.Role;
 import tech.surfer.examserver.entity.User;
@@ -27,6 +28,9 @@ public class UserController {
     @NonNull
     private RoleRepository roleRepository;
 
+    @NonNull
+    private PasswordEncoder passwordEncoder;
+
     /**
      * creating user
      * @return
@@ -35,6 +39,10 @@ public class UserController {
     public User createUser(@RequestBody User user) {
 
         user.setProfile("default.png");
+
+        //encoding password with bcrypt
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         // set of user Roles
         Role role = this.roleRepository.findByRoleName("BAU");
 

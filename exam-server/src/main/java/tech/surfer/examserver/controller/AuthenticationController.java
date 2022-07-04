@@ -10,15 +10,17 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tech.surfer.examserver.auth.JwtUtils;
 import tech.surfer.examserver.entity.JwtRequest;
 import tech.surfer.examserver.entity.JwtResponse;
+import tech.surfer.examserver.entity.User;
+
+import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AuthenticationController {
 
     @NonNull
@@ -53,5 +55,15 @@ public class AuthenticationController {
         String token = this.jwtUtils.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    /**
+     * Get details of currently logged in user
+     * Principal object is automatically passed by spring security
+     * @return
+     */
+    @GetMapping("/currentUser")
+    public User getCurrentUser(Principal principal) {
+        return (User) this.userDetailsService.loadUserByUsername(principal.getName());
     }
 }
