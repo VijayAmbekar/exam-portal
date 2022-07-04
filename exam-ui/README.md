@@ -3,7 +3,7 @@
 * Based on Angular Material UI
 * Uses Bootstrap grid for layout
 * Connects with backend exam-server API
-* sweetalert2 module for shwoing messages
+* sweetalert2 module for showing messages
 
 
 

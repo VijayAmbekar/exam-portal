@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(User user, Set<UserRole> userRoles) {
 
-        User existingUser = this.userRepository.findByUserName(user.getUserName());
+        User existingUser = this.userRepository.findByUserName(user.getUsername());
 
         if(!Objects.isNull(existingUser)) {
             log.error("User already exist");
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
 
         User updatedUser = existingUser.get();
 
-        updatedUser.setUserName(user.getUserName());
+        updatedUser.setUserName(user.getUsername());
         updatedUser.setPassword(user.getPassword());
         updatedUser.setFirstName(user.getFirstName());
         updatedUser.setLastName(user.getLastName());

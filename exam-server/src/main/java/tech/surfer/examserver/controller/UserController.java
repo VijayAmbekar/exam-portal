@@ -3,14 +3,15 @@ package tech.surfer.examserver.controller;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.surfer.examserver.entity.Role;
 import tech.surfer.examserver.entity.User;
 import tech.surfer.examserver.entity.UserRole;
+import tech.surfer.examserver.exception.UserNotFoundException;
 import tech.surfer.examserver.repo.RoleRepository;
 import tech.surfer.examserver.service.UserService;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @RestController
@@ -70,5 +71,10 @@ public class UserController {
     @PutMapping("/")
     public User updateuser(@RequestBody User user) {
         return this.userService.updateUser(user);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity exceptionHandler(UserNotFoundException e) {
+        return ResponseEntity.badRequest().body("User Not Found");
     }
 }
