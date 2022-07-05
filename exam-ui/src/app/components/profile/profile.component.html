@@ -1,0 +1,38 @@
+<mat-card>
+    <h2>Your Profile Details</h2>
+    <mat-card-content>
+        
+        <div class="bootstrap-wrapper">
+
+            <div class="container">
+
+                <div class="container text-center">
+                    <img src="../../../assets/images/default.jpg" alt="Default Image" class="profile-image responsive image">
+                    <h1>{{userFullName}}</h1>
+                </div>
+                
+                <div class="row">
+
+                    <div class="col-md-10 offset-md-1">
+                        <!-- Details-->
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width">
+
+                            <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"> {{column}} </th>
+                                <td mat-cell *matCellDef="let element" class="text-center"> {{element[column]}} </td>
+                              </ng-container>
+                          
+                            <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary">UPDATE</button>
+        <button mat-raised-button color="accent">SHARE</button>
+    </mat-card-actions>
+</mat-card>

@@ -11,7 +11,7 @@
       Register
     </a>
 
-    <button *ngIf="isLoggedIn && user" mat-icon-button class="example-icon favorite-icon ml20" aria-label="Example icon-button with heart icon">
+    <button *ngIf="isLoggedIn && user" routerLink="/admin-dashboard/profile" mat-icon-button class="example-icon favorite-icon ml20" aria-label="Example icon-button with heart icon">
       {{user.username}}
     </button>
     <button *ngIf="isLoggedIn" mat-icon-button class="example-icon favorite-icon ml30" aria-label="Example icon-button with share icon" (click)="logout()">

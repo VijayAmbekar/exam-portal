@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tech.surfer.examserver.entity.User;
 import tech.surfer.examserver.entity.UserRole;
+import tech.surfer.examserver.exception.UserFoundException;
 import tech.surfer.examserver.repo.RoleRepository;
 import tech.surfer.examserver.repo.UserRepository;
 import tech.surfer.examserver.service.UserService;
@@ -33,13 +34,13 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public User createUser(User user, Set<UserRole> userRoles) {
+    public User createUser(User user, Set<UserRole> userRoles) throws UserFoundException {
 
         User existingUser = this.userRepository.findByUserName(user.getUsername());
 
         if(!Objects.isNull(existingUser)) {
             log.error("User already exist");
-            throw new RuntimeException("User already exist");
+            throw new UserFoundException("User already exist");
         } else {
             // save roles first
             roleRepository.saveAll(userRoles.stream().map(ur -> ur.getRole()).collect(Collectors.toSet()));

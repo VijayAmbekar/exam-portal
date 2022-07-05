@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import tech.surfer.examserver.entity.Role;
 import tech.surfer.examserver.entity.User;
 import tech.surfer.examserver.entity.UserRole;
+import tech.surfer.examserver.exception.UserFoundException;
 import tech.surfer.examserver.exception.UserNotFoundException;
 import tech.surfer.examserver.repo.RoleRepository;
 import tech.surfer.examserver.service.UserService;
@@ -36,7 +37,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/")
-    public User createUser(@RequestBody User user) {
+    public User createUser(@RequestBody User user) throws UserFoundException {
 
         user.setProfile("default.png");
 
@@ -84,5 +85,10 @@ public class UserController {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity exceptionHandler(UserNotFoundException e) {
         return ResponseEntity.badRequest().body("User Not Found");
+    }
+
+    @ExceptionHandler(UserFoundException.class)
+    public ResponseEntity exceptionHandlerUserFound(UserFoundException e) {
+        return ResponseEntity.badRequest().body("User with this userName already exist. Try with another one!!");
     }
 }
