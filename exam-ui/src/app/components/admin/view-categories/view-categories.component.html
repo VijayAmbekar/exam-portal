@@ -1,0 +1,41 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        
+
+
+        <mat-card>
+            <div class="row">
+
+                <!-- Header and button in same row -->
+                <div class="col-md-9">
+                    <h1>All Categories</h1>
+                </div>
+                <div class="col-md-3">
+                    <mat-card-actions class="text-right">
+                        <button mat-mini-fab color="accent" aria-label="Add New Category" class="mr10" routerLink="/admin-dashboard/add-category">
+                            <mat-icon>add</mat-icon></button>
+                        <button mat-mini-fab color="accent" aria-label="Remove Category">
+                            <mat-icon>delete</mat-icon></button>
+                    </mat-card-actions>
+                </div>
+            </div>
+
+
+
+            
+            <!-- <div mat-subheader>All Categories</div> -->
+            <mat-list>
+                
+                <mat-list-item *ngFor="let c of categories">
+                    <mat-icon mat-list-icon>category</mat-icon>
+        
+                    <div mat-line>{{c.title}}</div>
+                    <div mat-line>{{c.description}}</div>
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-list>
+        
+        </mat-card>
+    </div>
+</div>
+

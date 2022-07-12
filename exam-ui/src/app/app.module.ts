@@ -11,7 +11,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
@@ -26,6 +26,16 @@ import {MatListModule} from '@angular/material/list';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { WelcomeComponent } from './components/admin/welcome/welcome.component';
 import {MatTableModule} from '@angular/material/table';
+import { ViewCategoriesComponent } from './components/admin/view-categories/view-categories.component';
+import { AddCategoriesComponent } from './components/admin/add-categories/add-categories.component';
+import { ViewQuizzesComponent } from './components/admin/view-quizzes/view-quizzes.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { AddQuizComponent } from './components/admin/add-quiz/add-quiz.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +49,11 @@ import {MatTableModule} from '@angular/material/table';
     UserDashboardComponent,
     ProfileComponent,
     SidebarComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ViewCategoriesComponent,
+    AddCategoriesComponent,
+    ViewQuizzesComponent,
+    AddQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +62,7 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
     FormsModule,
     MatSnackBarModule,
     HttpClientModule,
@@ -55,7 +70,12 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatChipsModule,
+    MatTooltipModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [
     authInterceptorProviders

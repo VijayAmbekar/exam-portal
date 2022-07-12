@@ -1,0 +1,50 @@
+<div class="bootstrap-wrapper">
+
+            <div class="row">
+
+                <!-- Header and button in same row -->
+                <div class="col-md-9">
+                    <h1>All Quizzes</h1>
+                </div>
+                <div class="col-md-3">
+                    <mat-card-actions class="text-right">
+                        <button mat-mini-fab color="primary" aria-label="Add New Quiz" class="mr10" routerLink="/admin-dashboard/add-quiz">
+                            <mat-icon>add</mat-icon></button>
+                        <button mat-mini-fab color="primary" aria-label="Remove Quiz">
+                            <mat-icon>delete</mat-icon></button>
+                    </mat-card-actions>
+                </div>
+            </div>
+
+        <mat-card *ngFor="let q of quizzes" class="mt10">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{q.title}}</mat-card-title>
+                <mat-card-subtitle>{{q.category.title}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+
+                    <div class="col-md-10">
+                        <div>{{q.description}}</div>
+                        <div>
+                            <mat-chip-list>
+                                <mat-chip color="accent" selected>Max Marks: {{q.maxMarks}}</mat-chip>
+                                <mat-chip color="accent" selected>Questions: {{q.numberOfQuestions}}</mat-chip>
+                            </mat-chip-list>
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <button mat-mini-fab color="primary" aria-label="List of questions in quiz" class="mr10" matTooltip="questions">
+                            <mat-icon>question_mark</mat-icon></button>
+                            <button mat-mini-fab color="primary" aria-label="Update quiz" class="mr10" matTooltip="update quiz">
+                                <mat-icon>update</mat-icon></button>
+                            <button mat-mini-fab color="primary" aria-label="Quiz Attempts" matTooltip="Quiz attempts">
+                                <mat-icon>recent_actors</mat-icon></button>
+                    </div>
+                </div>               
+            </mat-card-content>
+
+        </mat-card>
+</div>
+

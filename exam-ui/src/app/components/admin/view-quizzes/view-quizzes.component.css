@@ -1,0 +1,14 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('../../../../assets/images/quiz4.png');
+    background-size: cover;
+  }
+
+  .question-list-image {
+    background-image: url('../../../../assets/images/question2.png');
+    background-size: cover;
+    background-color: rgb(202, 194, 194);
+  }
