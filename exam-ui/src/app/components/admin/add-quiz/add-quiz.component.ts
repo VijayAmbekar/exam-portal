@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
@@ -18,14 +19,14 @@ export class AddQuizComponent implements OnInit {
     description: '',
     maxMarks: '',
     numberOfQuestions: '',
-    isActive: true,
+    isActive: false,
     category:  {
         cid: ''
     }
   };
 
   constructor(private _categoryService: CategoryService, private _snackBar: MatSnackBar,
-    private _quizService: QuizService) { }
+    private _quizService: QuizService, private _router: Router) { }
 
   ngOnInit(): void {
     this._categoryService.categories().subscribe(
@@ -53,6 +54,7 @@ export class AddQuizComponent implements OnInit {
       (data: any) => {
         console.log(data);
         Swal.fire('Success!', 'Added Quiz with id: ' + data.qid, 'success');
+        this._router.navigate(['/admin-dashboard/quizzes']);
       },
       (error) => {
         console.log(error);
